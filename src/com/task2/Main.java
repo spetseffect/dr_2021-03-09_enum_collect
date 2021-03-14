@@ -43,17 +43,22 @@ public class Main {
                         else System.out.println("УПС! Мы кажется кому-то поменяли пароль.");
                     }
                     case 2 -> {
-                        System.out.print("Введите порядковый номер(отсчёт с 1) элемента, который надо удалить: ");
-                        int i = sc.nextInt() - 1;
-                        if (i < 1 || i > arr.size()) {
-                            System.out.println("Ошибка: выход за пределы списка. Повторите попытку.");
-                            ShowMenu();
-                            continue;
-                        }
-                        System.out.println("Элемент с индексом " + (i) +
-                                " и значением " + (arr.remove(i)) + " удалён.");
+                        System.out.print("Введите логин пользователя, которого надо удалить: ");
+                        String login = sc.nextLine();
+                        if (map.containsKey(login)) {
+                            map.remove(login);
+                            System.out.println("1 пользователь удалён.");
+                        }else System.out.println("""
+                                    Пользователь с таким логином не существует.
+                                    Повторите попытку когда таковой появится.""");
                     }
-                    case 3 -> ArrToConsole(arr);
+                    case 3 -> {
+                        System.out.print("Введите логин для проверки на наличие: ");
+                        String login = sc.nextLine();
+                        if (map.containsKey(login)) {
+                            System.out.println("Пользователь с таким логином существует.");
+                        }else System.out.println("Пользователь с таким логином не существует.");
+                    }
                     case 4 -> {
                         System.out.print("Введите значение, которое будем искать: ");
                         int i = sc.nextInt();
