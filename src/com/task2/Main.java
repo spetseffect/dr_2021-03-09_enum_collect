@@ -22,6 +22,7 @@ public class Main {
             while (true) {
                 System.out.print("Ваш выбор: ");
                 int n = sc.nextInt();
+                sc.nextLine();
                 switch (n) {
                     case 1 -> {
                         System.out.print("Введите логин: ");
