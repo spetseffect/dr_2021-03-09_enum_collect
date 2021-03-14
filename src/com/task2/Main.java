@@ -35,7 +35,7 @@ public class Main {
                             if(a==1) {
                                 System.out.print("Введите логин: ");
                                 login = sc.nextLine();
-                            }else continue;
+                            }
                         }
                         System.out.print("Введите пароль: ");
                         String pass = sc.nextLine();
@@ -60,11 +60,17 @@ public class Main {
                         }else System.out.println("Пользователь с таким логином не существует.");
                     }
                     case 4 -> {
-                        System.out.print("Введите значение, которое будем искать: ");
-                        int i = sc.nextInt();
-                        System.out.print("Элемент с таким значением ");
-                        if (arr.contains(i)) System.out.println("есть.");
-                        else System.out.println("отсутствует.");
+                        System.out.print("Введите логин, который надо изменить: ");
+                        String oldLogin = sc.nextLine();
+                        if (map.containsKey(oldLogin)) {
+                            System.out.print("Введите новый логин: ");
+                            String newLogin = sc.nextLine();
+                            var val=map.remove(oldLogin);
+                            map.put(newLogin,val);
+                            System.out.println("Логин изменён.");
+                        }else System.out.println("""
+                                    Пользователь с таким логином не существует.
+                                    Повторите попытку когда таковой появится.""");
                     }
                     case 5 -> {
                         System.out.print("Введите порядковый номер(отсчёт с 1) элемента, который надо изменить: ");
