@@ -42,7 +42,7 @@ public class Main {
                     arr.add(k);
                 }
                 case 2 -> {
-                    System.out.println("Введите порядковый номер элемента, который надо удалить: ");
+                    System.out.print("Введите порядковый номер(отсчёт с 1) элемента, который надо удалить: ");
                     int i = sc.nextInt();
                     System.out.println("Элемент с индексом " + (i - 1) +
                             " и значением " + ((int) arr.remove(i - 1)) + " удалён.");
@@ -52,12 +52,20 @@ public class Main {
                     ArrToConsole(arr);
                 }
                 case 4 -> {
+                    System.out.print("Введите значение, которое будем искать: ");
+                    int i = sc.nextInt();
+                    System.out.print("Элемент с таким значением ");
+                    if(arr.contains(i)) System.out.println("есть.");
+                    else System.out.println("отсутствует.");
                 }
                 case 5 -> {
                 }
-                default -> System.out.println("Выход.");
+                default -> {
+                    System.out.println("Выход.");
+                    return;
+                }
             }
-            if(!n.equals(0)) ShowMenu();
+            ShowMenu();
         }
         sc.close();
     }
