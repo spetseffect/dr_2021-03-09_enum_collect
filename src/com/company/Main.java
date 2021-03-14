@@ -32,7 +32,6 @@ public class Main {
         ArrayList<Integer> arr=new ArrayList<>();
         for (String i :s)
             arr.add(Integer.valueOf(i));
-        ArrToConsole(arr);
         ShowMenu();
         Scanner scN=new Scanner(System.in);
         Integer n=scN.nextInt();
@@ -43,10 +42,19 @@ public class Main {
                 arr.add(k);
                 break;
             }
-            case 2:break;
-            case 3:break;
-            case 4:break;
-            case 5:break;
+            case 2: {
+                break;
+            }
+            case 3: {
+                ArrToConsole(arr);
+                break;
+            }
+            case 4: {
+                break;
+            }
+            case 5: {
+                break;
+            }
             default: System.out.println("Выход.");
         }
         scN.close();
