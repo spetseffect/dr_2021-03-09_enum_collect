@@ -35,7 +35,7 @@ public class Main {
                             if(a==1) {
                                 System.out.print("Введите логин: ");
                                 login = sc.nextLine();
-                            }
+                            }else break;
                         }
                         System.out.print("Введите пароль: ");
                         String pass = sc.nextLine();
@@ -73,18 +73,24 @@ public class Main {
                                     Повторите попытку когда таковой появится.""");
                     }
                     case 5 -> {
-                        System.out.print("Введите порядковый номер(отсчёт с 1) элемента, который надо изменить: ");
-                        int i = sc.nextInt() - 1;
-                        if (i < 1 || i > arr.size()) {
-                            System.out.println("Ошибка: выход за пределы списка. Повторите попытку.");
-                            ShowMenu();
-                            continue;
-                        }
-                        System.out.print("Введите новое значение: ");
-                        int v = sc.nextInt();
-                        var tmp = arr.get(i);
-                        if (tmp.equals(arr.set(i, v))) System.out.println("Изменено успешно.");
-                        else System.out.println("Изменение почему-то не удалось.");
+                        System.out.print("Введите логин пользователя, пароль которому надо изменить: ");
+                        String login = sc.nextLine();
+                        if (map.containsKey(login)) {
+                            System.out.print("Введите старый пароль: ");
+                            String oldPass = sc.nextLine();
+                            System.out.print("Введите новый пароль: ");
+                            String newPass = sc.nextLine();
+                            System.out.print("Повторите новый пароль: ");
+                            String newPass2 = sc.nextLine();
+                            if(oldPass.equals(map.get(login)) && newPass.equals(newPass2)) {
+                                map.put(login, newPass);
+                                System.out.println("Пароль изменён.");
+                            }else System.out.println("""
+                                    Не верный старый пароль или новый пароль и его подтверждение не совпадают.
+                                    Повторите попытку позже.""");
+                        }else System.out.println("""
+                                    Пользователь с таким логином не существует.
+                                    Повторите попытку когда таковой появится.""");
                     }
                     default -> {
                         System.out.println("Выход...");
@@ -92,7 +98,7 @@ public class Main {
                     }
                 }
                 System.out.print("\n");
-                try { sleep(1000);}
+                try { sleep(1000);}//без try/catch работать не хочет
                 catch (InterruptedException e) { e.printStackTrace(); }
                 ShowMenu();
             }

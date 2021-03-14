@@ -83,7 +83,7 @@ public class Main {
                     }
                 }
                 System.out.print("\n");
-                try { sleep(1000);}
+                try { sleep(1000);}//без try/catch работать не хочет
                 catch (InterruptedException e) { e.printStackTrace(); }
                 ShowMenu();
             }
