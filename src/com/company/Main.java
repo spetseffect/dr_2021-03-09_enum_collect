@@ -25,6 +25,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        System.out.println("");
         Scanner sc=new Scanner(System.in);
         String str=sc.nextLine();
         String[] s=str.split(",\s?");
@@ -59,9 +60,21 @@ public class Main {
                     else System.out.println("отсутствует.");
                 }
                 case 5 -> {
+                    System.out.print("Введите порядковый номер(отсчёт с 1) элемента, который надо изменить: ");
+                    int i = sc.nextInt()-1;
+                    if(i<1 || i>arr.size()){
+                        System.out.println("Ошибка: выход за пределы списка. Повторите попытку.");
+                        ShowMenu();
+                        continue;
+                    }
+                    System.out.print("Введите новое значение: ");
+                    int v = sc.nextInt();
+                    var tmp=arr.get(i);
+                    if(tmp.equals(arr.set(i,v))) System.out.println("Изменено успешно.");
+                    else System.out.println("Изменение почему-то не удалось.");
                 }
                 default -> {
-                    System.out.println("Выход.");
+                    System.out.println("Выход...");
                     return;
                 }
             }
